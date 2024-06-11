@@ -24,14 +24,14 @@ router.post("/login", async (req, res) => {
 
     const token = await authService.login(loginData);
     
-    res.cookie("auth");
+    res.cookie("auth", token);
      
     res.redirect("/");
 });
 
 router.get("/logout", (req, res) => {
     res.clearCookie("auth");
-    res.send("/");
+    res.redirect("/");
 })
 
 module.exports = router;
